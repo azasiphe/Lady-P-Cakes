@@ -585,7 +585,25 @@
         document.getElementById('submitOrder').addEventListener('click', function() {
             // Get selected cake
             const cakeSelection = document.querySelector('input[name="cake"]:checked');
-            const selectedCake = cakeSelection ? cakeSelection.value : "No cake selected";
+
+if (cakeSelection) {
+    const selectedCake = cakeSelection.value;
+    
+    // Find the corresponding price and image based on the selected radio input
+    const parentLabel = cakeSelection.closest('label');
+    
+    const priceElement = parentLabel.querySelector('.text-primary');
+    const price = priceElement ? priceElement.innerText : "Price not available";
+    
+    const imageElement = parentLabel.querySelector('.img-fluid');
+    const imageSrc = imageElement ? imageElement.src : "Image not available";
+    
+    console.log(`Selected Cake: ${selectedCake}`);
+    console.log(`Price: ${price}`);
+    console.log(`Image URL: ${imageSrc}`);
+} else {
+    console.log("No cake selected");
+}
     
             // Get user inputs
             const name = document.getElementById('name').value;
