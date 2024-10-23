@@ -221,9 +221,14 @@
             `Subject: ${subject}\n` +
             `Message: ${message}`;
 
-        const whatsappURL = `https://wa.me/+27833983284text=${encodeURIComponent(whatsappMessage)}`;
-
-        window.open(whatsappURL, '_blank'); // Open WhatsApp in a new tab
+            // Encode the message for URL
+            const encodedMessage = encodeURIComponent(whatsappMessage);
+    
+            // WhatsApp URL with your number
+            const whatsappUrl = `https://api.whatsapp.com/send?phone=27833983284&text=${encodedMessage}`;
+    
+            // Open WhatsApp with the message
+            window.open(whatsappUrl, '_blank');
     });
 </script>
 </body>
